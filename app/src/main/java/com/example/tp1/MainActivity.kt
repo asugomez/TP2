@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 editor.putString("login", Pseudo?.text.toString())
                 editor.commit()
 
-                var l= sp.getString("login","gf")
+                val l= sp.getString("login","gf")
                 Log.i("PMR",l.toString())
 
 
