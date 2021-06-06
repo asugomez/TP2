@@ -1,4 +1,4 @@
-package com.example.tp1
+package com.example.tp1.ui.main
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,8 +6,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tp1.adapter.AdapterItem
-import com.example.tp1.adapter.Item
+import com.example.tp1.R
+import com.example.tp1.ui.main.adapter.AdapterItem
+import com.example.tp1.ui.main.adapter.Item
 
 
 class ShowListActivity : AppCompatActivity(){

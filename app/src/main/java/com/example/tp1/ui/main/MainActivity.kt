@@ -1,6 +1,5 @@
-package com.example.tp1
+package com.example.tp1.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tp1.R
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         when (id) {
-            R.id.action_settings-> {
+            R.id.action_settings -> {
                 val iGP = Intent(this, SettingsActivity::class.java)
                 startActivity(iGP)
             }

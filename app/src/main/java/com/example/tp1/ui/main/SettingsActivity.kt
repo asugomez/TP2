@@ -1,12 +1,9 @@
-package com.example.tp1
+package com.example.tp1.ui.main
 
 import android.os.Bundle
-import android.preference.CheckBoxPreference
-import android.preference.EditTextPreference
-import android.preference.Preference
 import android.preference.PreferenceActivity
-import android.widget.Toast
 import androidx.annotation.Nullable
+import com.example.tp1.R
 
 @Suppress("DEPRECATION")
 class SettingsActivity() : PreferenceActivity(){

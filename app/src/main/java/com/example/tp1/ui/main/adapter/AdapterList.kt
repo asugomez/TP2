@@ -1,4 +1,4 @@
-package com.example.tp1.adapter
+package com.example.tp1.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.View
