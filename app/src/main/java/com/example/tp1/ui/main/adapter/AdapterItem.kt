@@ -6,6 +6,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp1.R
+import com.example.tp1.data.model.Item
 
 
 class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<AdapterItem.ItemViewHolder>()  {
@@ -28,20 +29,27 @@ class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<
 
     override fun getItemCount() = dataset.size
 
-    public fun addData(text: String) {
+    /*fun addData(text: String) {
         // add data in the list to display
         dataset.add(Item(text))
         checkStatus.put(dataset.size, false)
         notifyItemChanged(dataset.size)
+    }*/
+    fun showData(newDataSet: List<Item>){
+        dataset.clear()
+        dataset.addAll(newDataSet)
+        notifyDataSetChanged()
     }
 
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val cbView = itemView.findViewById<CheckBox>(R.id.Object)
 
         fun bind(item: Item) {
-            cbView.text = item.itemTextStr
+            cbView.text = item.label
         }
     }
 
 
 }
+
+

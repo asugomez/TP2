@@ -13,8 +13,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp1.R
+import com.example.tp1.data.DataProvider
+import com.example.tp1.data.model.Item
 
 
+//@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var sp: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
+        //val result: List<Item> = DataProvider.getItemsFromApi()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

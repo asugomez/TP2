@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp1.R
+import com.example.tp1.data.model.List
 
 
 class AdapterList(private val dataset: MutableList<List>): RecyclerView.Adapter<AdapterList.ItemViewHolder>()  {
@@ -28,10 +29,17 @@ class AdapterList(private val dataset: MutableList<List>): RecyclerView.Adapter<
     }
 
     override fun getItemCount() = dataset.size
-
-    public fun addData(text: String) {
+    /*
+    fun addData(text: String) {
         dataset.add(List(text))
         notifyItemChanged(dataset.size)
+    }
+
+     */
+    fun showData(newDataSet: kotlin.collections.List<List>){
+        dataset.clear()
+        dataset.addAll(newDataSet)
+        notifyDataSetChanged()
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener?) {
@@ -42,7 +50,7 @@ class AdapterList(private val dataset: MutableList<List>): RecyclerView.Adapter<
         val textView = itemView.findViewById<TextView>(R.id.ObjectList)
 
         fun bind(list: List) {
-            textView.text = list.listTextStr
+            textView.text = list.label
         }
     }
 
