@@ -46,12 +46,16 @@ class ChoixListActivity : AppCompatActivity(){
         val change = Intent(this,ShowListActivity::class.java)
         change.putExtra("pseudo", pseudo)
 
+
         adapter.setOnItemClickListener(object : AdapterList.OnItemClickListener {
             override fun onItemClick(position: Int) {
+                /*
+                //À changer:
                 val listName = lists[position].listTextStr
                 Toast.makeText(applicationContext, listName, Toast.LENGTH_SHORT).show()
                 change.putExtra("list", listName)
                 startActivity(change)
+                 */
             }
 
         })
