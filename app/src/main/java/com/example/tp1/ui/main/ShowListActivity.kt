@@ -35,10 +35,10 @@ class ShowListActivity : AppCompatActivity(){
 
 
 
-        var b=findViewById<Button>(R.id.buttonOkChObject)
-        var t=findViewById<EditText>(R.id.editTextObject)
+        val b=findViewById<Button>(R.id.buttonOkChObject)
+        val t=findViewById<EditText>(R.id.editTextObject)
         b.setOnClickListener {
-            var newItemName = t.text.toString()
+            val newItemName = t.text.toString()
                 adapter.addData(newItemName) // add new item
                 t.setText("") // clear the input area
             }

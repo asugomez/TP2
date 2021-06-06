@@ -38,6 +38,7 @@ class ChoixListActivity : AppCompatActivity(){
         val t=findViewById<EditText>(R.id.editTextListe)
 
         b.setOnClickListener {
+            // to change --> with the user
             val newListName = t.text.toString()
             Toast.makeText(this, newListName, Toast.LENGTH_SHORT).show()
             adapter.addData(newListName)
