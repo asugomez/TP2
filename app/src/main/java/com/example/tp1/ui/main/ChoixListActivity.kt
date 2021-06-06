@@ -100,11 +100,12 @@ class ChoixListActivity : AppCompatActivity(){
     ) {
         activityScope.launch {
             list.visibility = View.GONE
-
-            // main
-            val lists = DataProvider.getListsFromApi()
-            // main
-            adapter.showData(lists)
+            try{
+                val lists = DataProvider.getListsFromApi()
+                adapter.showData(lists)
+            }catch(e: Exception){
+                Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
+            }
             list.visibility = View.VISIBLE
 
         }

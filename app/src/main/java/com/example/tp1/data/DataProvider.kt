@@ -29,10 +29,10 @@ object DataProvider {
 
 
     suspend fun getListsFromApi(): List<com.example.tp1.data.model.List>{
-        return service.getLists().lists
+        return service.getLists(hashcode).lists
     }
     suspend fun getItemsFromApi(): List<Item> {
-        return service.getItems().items
+        return service.getItemsOfAList(2).items
     }
 
 
