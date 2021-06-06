@@ -1,10 +1,11 @@
-package com.example.tp1
+package com.example.tp1.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tp1.R
 
 
 class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<AdapterItem.ItemViewHolder>()  {

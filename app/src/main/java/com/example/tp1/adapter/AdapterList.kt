@@ -1,11 +1,11 @@
-package com.example.tp1
+package com.example.tp1.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tp1.R
 
 
 class AdapterList(private val dataset: MutableList<List>): RecyclerView.Adapter<AdapterList.ItemViewHolder>()  {

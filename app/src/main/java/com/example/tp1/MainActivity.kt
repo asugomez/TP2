@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-        var l=sp.getString("login","null")
+        val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
     }
 
