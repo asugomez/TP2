@@ -1,15 +1,15 @@
 package com.example.tp1.data
 
-import com.example.tp1.data.api.ProductHuntService
-import com.example.tp1.data.model.Post
-import com.example.tp1.data.model.PostsResponse
+import com.example.tp1.data.api.TodoAPI
+import com.example.tp1.data.model.Item
+import com.example.tp1.data.model.ItemResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.BufferedReader
 import java.net.HttpURLConnection
-import java.net.URL
+//import java.net.URLgit
 
 object DataProvider {
     private val BASE_URL = "http://tomnab.fr/todo-api/"
@@ -20,11 +20,11 @@ object DataProvider {
         .build()
 
 
-    private val service = retrofit.create(ProductHuntService::class.java)
+    private val service = retrofit.create(TodoAPI::class.java)
 
 
-    suspend fun getPostFromApi(): List<Post> {
-        return service.getPosts().posts
+    suspend fun getPostFromApi(): List<Item> {
+        return service.getItems().items
     }
 
 }
