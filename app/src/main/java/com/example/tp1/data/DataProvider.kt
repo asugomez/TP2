@@ -15,28 +15,53 @@ import java.net.URL
 //import java.net.URLgit
 
 object DataProvider {
+    private val hashcode = "b10ab07311337e6484153b0f5793d516"
     private val API_URL = "http://tomnab.fr/todo-api/"
 
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(API_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+
+    private val service = retrofit.create(TodoAPI::class.java)
+
+
+    suspend fun getListsFromApi(): List<com.example.tp1.data.model.List>{
+        return service.getLists().lists
+    }
+    suspend fun getItemsFromApi(): List<Item> {
+        return service.getItems().items
+    }
+
+
+
+
+}
+
+/*
     val gson = Gson()
 
     fun getListsFromApi(): List<com.example.tp1.data.model.List>{
-        val json = getCall()
+        val json = getCall("")
         val listResponse = gson.fromJson(json, ListResponse::class.java)
         return listResponse.lists
     }
 
     fun getItemsFromApi(): List<Item>{
-        val json = getCall()
+        val json = getCall("items")
         val itemResponse = gson.fromJson(json, ItemResponse::class.java)
         return itemResponse.items
     }
 
 
-    private fun getCall(): String?{
+    private fun getCall(url:String): String?{
         var urlConnection: HttpURLConnection?=null
         var reader: BufferedReader?=null
         try{
-            urlConnection = URL(API_URL).openConnection() as HttpURLConnection
+            urlConnection = URL(API_URL+url).openConnection() as HttpURLConnection
+            //urlConnection.hashCode(hashcode)
             urlConnection.requestMethod = "GET"
             urlConnection.connect()
             reader=urlConnection.inputStream?.bufferedReader()
@@ -63,22 +88,4 @@ object DataProvider {
         }
 
     }
-
-    /*
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(API_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-
-    private val service = retrofit.create(TodoAPI::class.java)
-
-
-    suspend fun getItemsFromApi(): List<Item> {
-        return service.getItems().items
-    }
-
-     */
-
-}
+ */

@@ -1,10 +1,24 @@
 package com.example.tp1.data.api
 
 import com.example.tp1.data.model.ItemResponse
+import com.example.tp1.data.model.ListResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface TodoAPI {
-    @GET("v1/posts?access_token=46a03e1c32ea881c8afb39e59aa17c936ff4205a8ed418f525294b2b45b56abb")
+    @GET("/lists?hash=b10ab07311337e6484153b0f5793d516")
     suspend fun getItems(): ItemResponse
+
+    suspend fun getLists(): ListResponse
+
+
+
+    /*
+    @POST("createList")
+    fun createList(
+
+    )
+
+     */
 }

@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tp1.R
 import com.example.tp1.data.DataProvider
 import com.example.tp1.data.model.Item
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 
 //@Suppress("DEPRECATION")
@@ -22,7 +26,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var sp: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
     private var Pseudo: EditText? = null
+    private var Mdp: EditText? = null
     private var BtnOK: Button? = null
+
+    private val activityScope = CoroutineScope(
+        SupervisorJob()
+                + Dispatchers.Main
+                + CoroutineExceptionHandler { _, throwable ->
+            Log.e("MainActivity", "CoroutineExceptionHandler : ${throwable.message}")
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //sp = getSharedPreferences("sp",Context.MODE_PRIVATE)
         Pseudo = findViewById(R.id.Pseudo)
+        Mdp = findViewById(R.id.editTextTextPassword)
         BtnOK = findViewById(R.id.ButtonOk)
 
         BtnOK!!.setOnClickListener(this)
@@ -41,7 +55,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
-        //val result: List<Item> = DataProvider.getItemsFromApi()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
