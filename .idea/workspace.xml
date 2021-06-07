@@ -33,7 +33,7 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/mainActivity" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
@@ -47,15 +47,27 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_19_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_api_phone_17_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_base_17_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_logging_interceptor_3_10_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_adapter_rxjava2_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_1_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TP1.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TP1.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/DataProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/DataProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/api/TodoAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/api/TodoAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/data/model/LoginResponse.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/ChoixListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/ChoixListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/ShowListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/ShowListActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/adapter/AdapterList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/tp1/ui/main/adapter/AdapterList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +118,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -194,7 +206,7 @@
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" goal="" />
       </method>
     </configuration>
   </component>
@@ -220,7 +232,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="origin/mainActivity" />
                       </list>
                     </value>
                   </entry>
@@ -234,6 +246,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1786" y="-305" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623033994084">
+      <screen x="1366" y="-466" width="1920" height="1055" />
+    </state>
+    <state x="1786" y="-305" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623033994084" />
     <state x="2109" y="-244" key="#com.intellij.ide.util.MemberChooser" timestamp="1623028440239">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
@@ -254,26 +270,26 @@
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
     <state x="1909" y="-205" key="AndroidCreateResourceFileDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623027559715" />
-    <state x="2106" y="-169" key="AndroidCreateXmlResourceDialog" timestamp="1623001545465">
+    <state x="2106" y="-169" key="AndroidCreateXmlResourceDialog" timestamp="1623035105056">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state x="2106" y="-169" key="AndroidCreateXmlResourceDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623001545465" />
-    <state width="1631" height="254" key="GridCell.Tab.0.bottom" timestamp="1623031372543">
+    <state x="2106" y="-169" key="AndroidCreateXmlResourceDialog/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623035105056" />
+    <state width="1631" height="254" key="GridCell.Tab.0.bottom" timestamp="1623035389692">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state width="1631" height="254" key="GridCell.Tab.0.bottom/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623031372543" />
-    <state width="1631" height="254" key="GridCell.Tab.0.center" timestamp="1623031372542">
+    <state width="1631" height="254" key="GridCell.Tab.0.bottom/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623035389692" />
+    <state width="1631" height="254" key="GridCell.Tab.0.center" timestamp="1623035389687">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state width="1631" height="254" key="GridCell.Tab.0.center/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623031372542" />
-    <state width="1631" height="254" key="GridCell.Tab.0.left" timestamp="1623031372540">
+    <state width="1631" height="254" key="GridCell.Tab.0.center/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623035389687" />
+    <state width="1631" height="254" key="GridCell.Tab.0.left" timestamp="1623035389685">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state width="1631" height="254" key="GridCell.Tab.0.left/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623031372540" />
-    <state width="1631" height="254" key="GridCell.Tab.0.right" timestamp="1623031372542">
+    <state width="1631" height="254" key="GridCell.Tab.0.left/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623035389685" />
+    <state width="1631" height="254" key="GridCell.Tab.0.right" timestamp="1623035389688">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>
-    <state width="1631" height="254" key="GridCell.Tab.0.right/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623031372542" />
+    <state width="1631" height="254" key="GridCell.Tab.0.right/1366.-466.1920.1055/0.25.1366.671@1366.-466.1920.1055" timestamp="1623035389688" />
     <state width="1631" height="254" key="GridCell.Tab.1.bottom" timestamp="1623031321665">
       <screen x="1366" y="-466" width="1920" height="1055" />
     </state>

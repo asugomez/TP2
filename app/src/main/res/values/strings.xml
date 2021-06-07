@@ -19,4 +19,6 @@
     <string name="pseudo">Pseudo:</string>
     <string name="ok">Ok</string>
     <string name="nouvelle_liste">Nouvelle liste</string>
+    <string name="user_name">user name</string>
+    <string name="mot_de_passe">Mot de passe:</string>
 </resources>

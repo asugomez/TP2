@@ -18,10 +18,9 @@ import com.example.tp1.data.DataProvider.connexion
 import kotlinx.coroutines.*
 
 
-//@Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity(){
-    private lateinit var sp: SharedPreferences
-    private lateinit var editor: SharedPreferences.Editor
+class MainActivity : AppCompatActivity() {
+    //private lateinit var sp: SharedPreferences
+    //private lateinit var editor: SharedPreferences.Editor
     private var Pseudo: EditText? = null
     private var Mdp: EditText? = null
     private var BtnOK: Button? = null
@@ -46,8 +45,7 @@ class MainActivity : AppCompatActivity(){
         //BtnOK!!.setOnClickListener(this)
 
 
-        //val l=sp.getString("login","null")
-        //Pseudo?.setText(l.toString())
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,32 +69,35 @@ class MainActivity : AppCompatActivity(){
     /*override fun onClick(v: View?) {
         when (v?.id) {
             R.id.ButtonOk -> {
-                //login()
+                login()
             }
         }
-    }*/
-/*
-    fun login(){
-        Log.i("PMR", "clickok")
+    }
+
+
+     */
+    /*fun login(){
+        //Log.i("PMR", "clickok")
         Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
 
-        val l = sp.getString("login", "gf")
-        Log.i("PMR", l.toString())
+        //val l = sp.getString("login", "gf")
 
         activityScope.launch {
             try{
                 val hash: String = connexion(Pseudo.toString(), Mdp.toString())
                 if (!hash.isEmpty()) {
                     //Garder dans shared preferences
-                    editor.putString("login", Pseudo?.text.toString())
-                    editor.commit()
+                    //editor.putString("login", Pseudo?.text.toString())
+                    //editor.commit()
+                    //val l=sp.getString("login","null")
+                    //Pseudo?.setText(l.toString())
 
                     //Changer Activite
                     val versSecondAct: Intent =
                         Intent(this@MainActivity, ChoixListActivity::class.java)
                     //Envoyer donnes
                     //versSecondAct.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    versSecondAct.putExtra("pseudo", Pseudo?.text.toString())
+                    //versSecondAct.putExtra("pseudo", Pseudo?.text.toString())
                     versSecondAct.putExtra("hash", hash)
                     startActivity(versSecondAct)
                 } else {
@@ -108,7 +109,9 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
- */
+     */
+
+
 
 
 }
