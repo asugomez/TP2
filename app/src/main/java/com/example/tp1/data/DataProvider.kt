@@ -22,9 +22,28 @@ object DataProvider {
 
     private val service = retrofit.create(TodoAPI::class.java)
 
-
-    suspend fun getPostFromApi(): List<Item> {
-        return service.getItems().items
+    suspend fun connexion(pseudo: String, pass: String): String{
+        return service.connexion(pseudo, pass)
     }
+
+    suspend fun getListsFromApi(hash: String): List<com.example.tp1.data.model.List>{
+        return service.getLists(hash).lists
+    }
+
+    suspend fun createList(id_user: Int, label: String, hash:String): List<com.example.tp1.data.model.List>{
+        return service.createList(id_user, label, hash).lists
+    }
+    suspend fun getItemsOfAList(id_list: Int, hash: String): List<Item> {
+        return service.getItemsOfAList(id_list, hash).items
+    }
+
+    suspend fun cocherDecochetItem(id_list: Int, id_item: Int, check: Int, hash: String){
+        return service.cocherDecocherItem(id_list, id_item, check, hash)
+    }
+    suspend fun createItem(id_list: Int, label: String, hash: String): List<Item>{
+        return service.createItem(id_list,label, hash).items
+    }
+
+
 
 }

@@ -13,6 +13,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp1.R
+import com.example.tp1.data.DataProvider.connexion
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,6 +25,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var editor: SharedPreferences.Editor
     private var Pseudo: EditText? = null
     private var BtnOK: Button? = null
+    private var Mdp: EditText? = null
+
+    private val activityScope = CoroutineScope(
+        SupervisorJob()
+                + Dispatchers.Main
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +42,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //sp = getSharedPreferences("sp",Context.MODE_PRIVATE)
         Pseudo = findViewById(R.id.Pseudo)
         BtnOK = findViewById(R.id.ButtonOk)
+        Mdp = findViewById(R.id.editPass)
 
         BtnOK!!.setOnClickListener(this)
 
@@ -63,22 +75,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         {
             R.id.ButtonOk ->
             {
-                Log.i("PMR","clickok")
-                Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-                //Garder dans shared preferences
-                editor.putString("login", Pseudo?.text.toString())
-                editor.commit()
+                login()
 
-                val l= sp.getString("login","gf")
-                Log.i("PMR",l.toString())
+            }
+        }
+    }
 
-
-                //Changer Activite
-                val versSecondAct: Intent = Intent(this@MainActivity, ChoixListActivity::class.java)
-                //Envoyer donnes
-                versSecondAct.putExtra("pseudo",Pseudo?.text.toString())
-                startActivity(versSecondAct)
-
+    fun login(){
+        //Log.i("PMR", "clickok")
+        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
+        //val l = sp.getString("login", "gf")
+        activityScope.launch {
+            try{
+                Toast.makeText(this@MainActivity, "ok2", Toast.LENGTH_SHORT).show()
+                val hash: String = connexion(Pseudo.toString(), Mdp.toString())
+                if (!hash.isEmpty()) {
+                    //Garder dans shared preferences
+                    editor.putString("login", Pseudo?.text.toString())
+                    editor.commit()
+                    val l=sp.getString("login","null")
+                    Pseudo?.setText(l.toString())
+                    //Changer Activite
+                    val versSecondAct: Intent =
+                        Intent(this@MainActivity, ChoixListActivity::class.java)
+                    //Envoyer donnes
+                    //versSecondAct.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    versSecondAct.putExtra("pseudo", Pseudo?.text.toString())
+                    versSecondAct.putExtra("hash", hash)
+                    // todo
+                    versSecondAct.putExtra("id_user", '1')
+                    startActivity(versSecondAct)
+                } else {
+                    Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception){
+                Toast.makeText(this@MainActivity, "${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
