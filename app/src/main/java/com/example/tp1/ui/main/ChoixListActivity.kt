@@ -19,21 +19,18 @@ import kotlinx.coroutines.*
 class ChoixListActivity : AppCompatActivity(){
     var hash: String? = null
 
-    private val activityScope = CoroutineScope(
+    /*private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
-                + CoroutineExceptionHandler { _, throwable ->
-            Log.e("ChoixActivity", "CoroutineExceptionHandler : ${throwable.message}")
-        }
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choix_list)
-        val pseudo: String? = intent.getStringExtra("pseudo")
-        hash = intent.getStringExtra("hash")
-        this.title = "Listes de $pseudo"
+        //val pseudo: String? = intent.getStringExtra("pseudo")
+        //hash = intent.getStringExtra("hash")
+        //this.title = "Listes de $pseudo"
 
         val lists = mutableListOf<List>()
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChListe)
@@ -43,7 +40,7 @@ class ChoixListActivity : AppCompatActivity(){
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        loadList(recyclerView, adapter, hash)
+        //loadList(recyclerView, adapter, hash)
 
 
 
@@ -63,8 +60,8 @@ class ChoixListActivity : AppCompatActivity(){
 
 
 
-        val change = Intent(this, ShowListActivity::class.java)
-        change.putExtra("pseudo", pseudo)
+        //val change = Intent(this, ShowListActivity::class.java)
+        //change.putExtra("pseudo", pseudo)
         //change
 
 
@@ -85,7 +82,7 @@ class ChoixListActivity : AppCompatActivity(){
 
         }
 
-
+/*
     private fun loadList(
         list: RecyclerView,
         adapter: AdapterList,
@@ -111,6 +108,8 @@ class ChoixListActivity : AppCompatActivity(){
         activityScope.cancel()
         super.onDestroy()
     }
+
+ */
 
 
 }

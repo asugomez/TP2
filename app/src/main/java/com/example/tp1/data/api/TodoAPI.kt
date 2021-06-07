@@ -50,6 +50,4 @@ interface TodoAPI {
                             @Query("label") label: String,
                            @Header("hash")hash: String): ItemResponse
 
-
-
 }

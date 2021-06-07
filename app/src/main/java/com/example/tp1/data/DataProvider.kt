@@ -10,6 +10,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Header
+import retrofit2.http.Path
+import retrofit2.http.Query
 import java.io.BufferedReader
 import java.net.HttpURLConnection
 import java.net.URL
@@ -21,21 +24,21 @@ object DataProvider {
     //private val id_list = 2
     private val API_URL = "http://tomnab.fr/todo-api/"
 
-
+    /*
     val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         this.level = HttpLoggingInterceptor.Level.BODY
     }
 
     val client: OkHttpClient = OkHttpClient.Builder().apply {
         this.addInterceptor(interceptor)
-    }.build()
+    }.build()*/
 
     fun getRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(API_URL)
-            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+            //.client(client)
     }
 
 
@@ -55,6 +58,13 @@ object DataProvider {
     }
     suspend fun getItemsOfAList(id_list: Int, hash: String): List<Item> {
         return service.getItemsOfAList(id_list, hash).items
+    }
+
+    suspend fun cocherDecochetItem(id_list: Int, id_item: Int, check: Int, hash: String){
+        return service.cocherDecocherItem(id_list, id_item, check, hash)
+    }
+    suspend fun createItem(id_list: Int, label: String, hash: String): List<Item>{
+        return service.createItem(id_list,label, hash).items
     }
 
 

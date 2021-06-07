@@ -38,7 +38,7 @@ class AdapterList(private val dataset: MutableList<List>): RecyclerView.Adapter<
      */
     fun showData(newDataSet: kotlin.collections.List<List>){
         //dataset.clear()
-        dataset.addAll(newDataSet)
+        this.dataset.addAll(newDataSet)
         notifyDataSetChanged()
     }
 

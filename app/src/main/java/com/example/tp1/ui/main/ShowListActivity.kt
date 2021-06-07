@@ -17,19 +17,19 @@ import kotlinx.coroutines.SupervisorJob
 
 
 class ShowListActivity : AppCompatActivity(){
-    private val activityScope = CoroutineScope(
+    /*private val activityScope = CoroutineScope(
         SupervisorJob()
                 + Dispatchers.Main
                 + CoroutineExceptionHandler { _, throwable ->
             Log.e("ShowActivity", "CoroutineExceptionHandler : ${throwable.message}")
         }
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_list)
-        var list_name: String? = intent.getStringExtra("list")
-        this.title = "Items of $list_name"
+        //var list_name: String? = intent.getStringExtra("list")
+        //this.title = "Items of $list_name"
 
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChObject)
         val items: MutableList<Item> = mutableListOf()
