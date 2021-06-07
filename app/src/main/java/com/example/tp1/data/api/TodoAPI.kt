@@ -6,14 +6,20 @@ import retrofit2.http.*
 
 interface TodoAPI {
 
+    //connexion
+    // l'API renvoie un hash
+    @POST("authenticate")
+    suspend fun connexion(@Query("user") user: String,
+                          @Query("password") password: String) : String
+
     //get all the lists from an user
     @GET("lists")
     suspend fun getLists(@Header("hash")hash: String): ListResponse
 
     // creation of a new list
-    @POST("users/{id}/lists?label={label}")
+    @POST("users/{id}/lists")
     suspend fun createList(@Path("id")id: Int,
-                            @Path("label")label:String,
+                            @Query("label")label:String,
                            @Header("hash")hash: String): ListResponse
 
     //creation of a new list from a connected user
@@ -22,26 +28,28 @@ interface TodoAPI {
 
     //
     @GET("lists/{id_list}/items")
-    suspend fun getItemsOfAList(@Path("id_list")id_list: Int): ItemResponse
+    suspend fun getItemsOfAList(@Path("id_list")id_list: Int,
+                                @Header("hash")hash: String): ItemResponse
 
     // cocher un item
     @PUT("lists/{id_list}/items/{id_item}?check=1")
     suspend fun cocherItem(@Path("id_list") id_list: Int,
-                            @Path("id_item") id_item: Int)
+                            @Path("id_item") id_item: Int,
+                           @Header("hash")hash: String)
 
+    // cocher un item: 1
+    // decocher un item:0
     @PUT("lists/{id_list}/items/{id_item}")
     suspend fun cocherDecocherItem(@Path("id_list") id_list: Int,
                                    @Path("id_item") id_item: Int,
-                                    @Query("check") check: Int)
+                                    @Query("check") check: Int,
+                                   @Header("hash")hash: String)
+    //create un item
+    @POST("lists/{id_list}/items")
+    suspend fun createItem(@Path("id_list")id_list: Int,
+                            @Query("label") label: String,
+                           @Header("hash")hash: String): ItemResponse
 
 
 
-
-    /*
-    @POST("createList")
-    fun createList(
-
-    )
-
-     */
 }

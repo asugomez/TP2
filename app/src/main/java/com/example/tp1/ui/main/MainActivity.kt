@@ -14,11 +14,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tp1.R
 import com.example.tp1.data.DataProvider
+import com.example.tp1.data.DataProvider.connexion
 import com.example.tp1.data.model.Item
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import com.example.tp1.data.model.LoginResponse
+import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 
 //@Suppress("DEPRECATION")
@@ -52,7 +55,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         BtnOK!!.setOnClickListener(this)
 
 
-
         val l=sp.getString("login","null")
         Pseudo?.setText(l.toString())
     }
@@ -76,28 +78,43 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when (v?.id)
-        {
-            R.id.ButtonOk ->
-            {
-                Log.i("PMR","clickok")
+        when (v?.id) {
+            R.id.ButtonOk -> {
+
+                Log.i("PMR", "clickok")
                 Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-                //Garder dans shared preferences
-                editor.putString("login", Pseudo?.text.toString())
-                editor.commit()
 
-                val l= sp.getString("login","gf")
-                Log.i("PMR",l.toString())
+                val l = sp.getString("login", "gf")
+                Log.i("PMR", l.toString())
 
+                activityScope.launch {
+                    try{
+                        val hash: String = connexion(Pseudo.toString(), Mdp.toString())
+                        if (!hash.isEmpty()) {
+                            //Garder dans shared preferences
+                            editor.putString("login", Pseudo?.text.toString())
+                            editor.commit()
 
-                //Changer Activite
-                val versSecondAct: Intent = Intent(this@MainActivity, ChoixListActivity::class.java)
-                //Envoyer donnes
-                versSecondAct.putExtra("pseudo",Pseudo?.text.toString())
-                startActivity(versSecondAct)
+                            //Changer Activite
+                            val versSecondAct: Intent =
+                                Intent(this@MainActivity, ChoixListActivity::class.java)
+                            //Envoyer donnes
+                            //versSecondAct.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            versSecondAct.putExtra("pseudo", Pseudo?.text.toString())
+                            versSecondAct.putExtra("hash", hash)
+                            startActivity(versSecondAct)
+                        } else {
+                            Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception){
+                        Toast.makeText(this@MainActivity, "${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
 
             }
         }
     }
+
 
 }

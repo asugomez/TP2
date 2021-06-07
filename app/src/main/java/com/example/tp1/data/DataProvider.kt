@@ -6,6 +6,8 @@ import com.example.tp1.data.model.ItemResponse
 import com.example.tp1.data.model.ListResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.BufferedReader
@@ -15,24 +17,44 @@ import java.net.URL
 //import java.net.URLgit
 
 object DataProvider {
-    private val hashcode = "b10ab07311337e6484153b0f5793d516"
+    //private val hashcode = "b10ab07311337e6484153b0f5793d516"
+    //private val id_list = 2
     private val API_URL = "http://tomnab.fr/todo-api/"
 
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(API_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-
-    private val service = retrofit.create(TodoAPI::class.java)
-
-
-    suspend fun getListsFromApi(): List<com.example.tp1.data.model.List>{
-        return service.getLists(hashcode).lists
+    val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+        this.level = HttpLoggingInterceptor.Level.BODY
     }
-    suspend fun getItemsFromApi(): List<Item> {
-        return service.getItemsOfAList(2).items
+
+    val client: OkHttpClient = OkHttpClient.Builder().apply {
+        this.addInterceptor(interceptor)
+    }.build()
+
+    fun getRetrofitInstance(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(API_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+
+    val service = getRetrofitInstance().create(TodoAPI::class.java)
+
+
+    suspend fun connexion(pseudo: String, pass: String): String{
+        return service.connexion(pseudo, pass)
+    }
+
+    suspend fun getListsFromApi(hash: String): List<com.example.tp1.data.model.List>{
+        return service.getLists(hash).lists
+    }
+
+    suspend fun createList(id_user: Int, label: String, hash:String): List<com.example.tp1.data.model.List>{
+        return service.createList(id_user, label, hash).lists
+    }
+    suspend fun getItemsOfAList(id_list: Int, hash: String): List<Item> {
+        return service.getItemsOfAList(id_list, hash).items
     }
 
 
