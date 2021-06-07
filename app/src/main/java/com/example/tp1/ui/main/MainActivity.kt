@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.ButtonOk ->
             {
                 login()
-
             }
         }
     }
@@ -87,8 +86,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //val l = sp.getString("login", "gf")
         activityScope.launch {
             try{
-                Toast.makeText(this@MainActivity, "ok2", Toast.LENGTH_SHORT).show()
-                val hash: String = connexion(Pseudo.toString(), Mdp.toString())
+                val hash = connexion(Pseudo?.text.toString(),  Mdp?.text.toString())
                 if (!hash.isEmpty()) {
                     //Garder dans shared preferences
                     editor.putString("login", Pseudo?.text.toString())
@@ -103,7 +101,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     versSecondAct.putExtra("pseudo", Pseudo?.text.toString())
                     versSecondAct.putExtra("hash", hash)
                     // todo
-                    versSecondAct.putExtra("id_user", '1')
+                    versSecondAct.putExtra("id_user", "1")
                     startActivity(versSecondAct)
                 } else {
                     Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()

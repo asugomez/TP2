@@ -16,6 +16,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import retrofit2.http.Header
+import retrofit2.http.Path
 
 
 class ShowListActivity : AppCompatActivity(){
@@ -31,8 +33,6 @@ class ShowListActivity : AppCompatActivity(){
         this.title = "Items de $list_name"
         val id_list: String? = intent.getStringExtra("id_list")
         val id_list_int: Int? = id_list?.toInt()
-        val id_user: String? = intent.getStringExtra("id_user")
-        val id_user_int: Int? = id_user?.toInt()
         val hash: String? = intent.getStringExtra("hash")
 
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChObject)
@@ -48,10 +48,11 @@ class ShowListActivity : AppCompatActivity(){
         //loadItems()
         activityScope.launch {
             recyclerView.visibility = View.GONE
+            Toast.makeText(this@ShowListActivity, "load items", Toast.LENGTH_SHORT).show()
             try{
                 if(id_list_int!=null && hash!=null){
-                    val lists = DataProvider.getItemsOfAList(id_list_int, hash)
-                    adapter.addData(lists)
+                    val items = DataProvider.getItemsOfAList(id_list_int, hash)
+                    adapter.addData(items)
                 }
             }catch(e: Exception){
                 Toast.makeText(this@ShowListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
@@ -65,18 +66,23 @@ class ShowListActivity : AppCompatActivity(){
         b.setOnClickListener {
             // add new item
             activityScope.launch {
-                recyclerView.visibility = View.GONE
                 try{
                     if(id_list_int!=null && hash!=null){
+                        recyclerView.visibility = View.GONE
                         val labelItem = t.text.toString()
+                        Toast.makeText(this@ShowListActivity,labelItem, Toast.LENGTH_SHORT).show()
+                        // add the new list
                         val newItem = DataProvider.createItem(id_list_int, labelItem, hash)
-                        adapter.addData(newItem) // add new item
-                        t.setText("") // clear the input area
+                        val listReady : List<Item> = listOf(newItem)
+                        adapter.addData(listReady)
+                        //val lists = DataProvider.getListsFromApi(hash)
+                        //adapter.addData(lists)
+                        t.setText("")
+                        recyclerView.visibility = View.VISIBLE
                     }
                 }catch(e: Exception){
                     Toast.makeText(this@ShowListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
                 }
-                recyclerView.visibility = View.VISIBLE
             }
 
         }

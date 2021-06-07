@@ -1,15 +1,16 @@
 package com.example.tp1.data.api
 
-import com.example.tp1.data.model.ItemResponse
-import com.example.tp1.data.model.ListResponse
+import com.example.tp1.data.model.*
+import com.example.tp1.data.model.List
 import retrofit2.http.*
+import java.util.*
 
 interface TodoAPI {
     //connexion
     // l'API renvoie un hash
     @POST("authenticate")
     suspend fun connexion(@Query("user") user: String,
-                          @Query("password") password: String) : String
+                          @Query("password") password: String) : Login
 
     @GET("lists")
     suspend fun getLists(@Header("hash")hash: String): ListResponse
@@ -18,7 +19,7 @@ interface TodoAPI {
     @POST("users/{id}/lists")
     suspend fun createList(@Path("id")id: Int,
                            @Query("label")label:String,
-                           @Header("hash")hash: String): ListResponse
+                           @Header("hash")hash: String): List
 
     //creation of a new list from a connected user
     //@POST("lists?label={label}")
@@ -46,6 +47,6 @@ interface TodoAPI {
     @POST("lists/{id_list}/items")
     suspend fun createItem(@Path("id_list")id_list: Int,
                            @Query("label") label: String,
-                           @Header("hash")hash: String): ItemResponse
+                           @Header("hash")hash: String): Item
 
 }

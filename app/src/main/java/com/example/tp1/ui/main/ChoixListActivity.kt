@@ -51,8 +51,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
         recyclerView.visibility = View.GONE
         try{
             if(hash!=null){
-                val lists = DataProvider.getListsFromApi(hash)
-                adapter.addData(lists)
+                Toast.makeText(this@ChoixListActivity, "load lists", Toast.LENGTH_SHORT).show()
+                val listes = DataProvider.getListsFromApi(hash)
+                adapter.addData(listes)
             }
         }catch(e: Exception){
             Toast.makeText(this@ChoixListActivity, "${e.message} ", Toast.LENGTH_SHORT).show()
@@ -67,37 +68,39 @@ override fun onCreate(savedInstanceState: Bundle?) {
         // to change --> with the user
         activityScope.launch {
             try{
+                Toast.makeText(this@ChoixListActivity, "For id user: $id_user", Toast.LENGTH_SHORT).show()
                 if(id_user_int!=null && hash!=null){
+                    recyclerView.visibility = View.GONE
                     val newListName = t.text.toString()
                     Toast.makeText(this@ChoixListActivity, newListName, Toast.LENGTH_SHORT).show()
                     // add the new list
                     val new_list = createList(id_user_int, newListName, hash)
-                    adapter.addData(new_list)
+                    val listReady : List<com.example.tp1.data.model.List> = listOf(new_list)
+                    adapter.addData(listReady)
+                    //val lists = DataProvider.getListsFromApi(hash)
+                    //adapter.addData(lists)
                     t.setText("")
+                    recyclerView.visibility = View.VISIBLE
                 }
             }catch (e: Exception){
                 Toast.makeText(this@ChoixListActivity, "${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
 
-
-
     }
 
 
     val change = Intent(this, ShowListActivity::class.java)
-    change.putExtra("hash", hash)
-
-
     adapter.setOnItemClickListener(object : AdapterList.OnItemClickListener {
         override fun onItemClick(position: Int) {
-                val listName = lists[position].label
-                val id_list = lists[position].id
-                val id_user = lists[position].id_user
-                Toast.makeText(applicationContext, listName, Toast.LENGTH_SHORT).show()
+                val listName = lists[position].label.toString()
+                val id_list = lists[position].id.toString()
+
+                //
                 change.putExtra("list", listName)
                 change.putExtra("id_list", id_list)
-                change.putExtra("id_user", id_user)
+                change.putExtra("hash", hash)
+                //Toast.makeText(applicationContext, id_list, Toast.LENGTH_SHORT).show()
                 startActivity(change)
 
         }

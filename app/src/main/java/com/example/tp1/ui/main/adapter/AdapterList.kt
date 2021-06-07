@@ -31,6 +31,7 @@ class AdapterList(private val dataset: MutableList<com.example.tp1.data.model.Li
     override fun getItemCount() = dataset.size
 
     fun addData(newDataSet: kotlin.collections.List<List>) {
+        //dataset.clear()
         dataset.addAll(newDataSet)
         notifyItemChanged(dataset.size)
     }
